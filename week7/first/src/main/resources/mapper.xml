@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace就是绑定具体的接口，比如说你实现哪一个接口就绑定具体的某一个接口-->
+<mapper namespace="com.yhm.dao.AccountDao">
+    <select id="findAll" resultType="com.yhm.domain.Account">
+      select * from mybatis.account;
+    </select>
+    <!--删除-->
+    <delete id="deleteByPrimaryKe" parameterType="String">
+      delete from mybatis.account where id=#{id};
+    </delete>
+    <!--插入语句-->
+    <insert id="insert" parameterType="com.yhm.domain.Account">
+        insert into mybatis.account(id, name, money, createtime, updatetime) VALUES(#{id},#{name},#{money},#{createTime},#{updateTime});
+    </insert>
+    <!--通过id查找-->
+    <select id="selectByPrimaryKey" parameterType="String" resultType="com.yhm.domain.Account">
+        select * from mybatis.account where id=#{id};
+    </select>
+    <!--更新update-->
+    <update id="updateByPrimaryKey" parameterType="com.yhm.domain.Account">
+        update mybatis.account set name=#{name},money=#{money},createtime=#{createTime},updatetime=#{updateTime} where id=#{id};
+    </update>
+
+</mapper>
